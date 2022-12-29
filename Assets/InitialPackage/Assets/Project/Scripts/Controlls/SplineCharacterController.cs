@@ -38,12 +38,12 @@ namespace Project
 
         private void OnEnable()
         {
-            JoystickController.Dragged += JoystickController_Dragged;
+           // JoystickController.Dragged += JoystickController_Dragged;
         }
 
         private void OnDisable()
         {
-            JoystickController.Dragged -= JoystickController_Dragged;
+           // JoystickController.Dragged -= JoystickController_Dragged;
         }
 
         // NOTE: required DreamTech package

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isTestSceneEnabled: 0
   _testSceneName: 
-  _tutorialSceneName: EmptyScene
+  _tutorialSceneName: SampleScene
   _levels:
-  - EmptyScene
+  - SampleScene
   _loopedLevels: []
   _coinPresets:
   - <LevelIndex>k__BackingField:

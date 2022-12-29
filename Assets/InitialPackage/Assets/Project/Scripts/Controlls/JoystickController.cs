@@ -7,9 +7,9 @@ namespace Project.UI
 {
 	public class JoystickController : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 	{
-        public static event Action Clicked = delegate { };
-        public static event Action<Vector2> Dragged = delegate { };
-        public static event Action Released = delegate { };
+        public  event Action Clicked = delegate { };
+        public  event Action<Vector2> Dragged = delegate { };
+        public  event Action Released = delegate { };
 
         [SerializeField]
         private float _minRad = 0f;

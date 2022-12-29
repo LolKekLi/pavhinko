@@ -29,18 +29,18 @@ namespace Project
         {
             base.OnEnable();
             
-            JoystickController.Clicked += JoystickController_Clicked;
-            JoystickController.Dragged += JoystickController_Dragged;
-            JoystickController.Released += JoystickController_Released;
+            // JoystickController.Clicked += JoystickController_Clicked;
+            // JoystickController.Dragged += JoystickController_Dragged;
+            // JoystickController.Released += JoystickController_Released;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             
-            JoystickController.Clicked -= JoystickController_Clicked;
-            JoystickController.Dragged -= JoystickController_Dragged;
-            JoystickController.Released -= JoystickController_Released;
+            // JoystickController.Clicked -= JoystickController_Clicked;
+            // JoystickController.Dragged -= JoystickController_Dragged;
+            // JoystickController.Released -= JoystickController_Released;
         }
 
         public override void Init()

@@ -11,5 +11,12 @@ namespace Project.Settings
             get;
             private set;
         }
+
+        [field: SerializeField]
+        public Ball Ball
+        {
+            get;
+            private set;
+        }
     }
 }
