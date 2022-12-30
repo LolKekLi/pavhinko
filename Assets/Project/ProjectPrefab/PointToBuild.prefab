@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 4210312344308901279}
   - component: {fileID: 3625269879352282759}
   - component: {fileID: 2834254916406482748}
+  - component: {fileID: 7568708717189374550}
+  - component: {fileID: 5542553924026722911}
   m_Layer: 6
   m_Name: PointToBuild
   m_TagString: Untagged
@@ -163,3 +165,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7568708717189374550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435109699775351829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb7541a6d5545729387617ecda6ea7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &5542553924026722911
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435109699775351829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.34
+  m_Center: {x: 0, y: 0.16068374, z: -0.00000052154064}
