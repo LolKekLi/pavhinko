@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project
@@ -5,6 +6,12 @@ namespace Project
     public class BuildingCreator
     {
         private PoolManager _poolManager = null;
+
+        public List<BuildingBase> SpawnedBuilding
+        {
+            get;
+            private set;
+        } = new List<BuildingBase>();
 
         public BuildingCreator(PoolManager poolManager)
         {
@@ -29,6 +36,8 @@ namespace Project
                     currentBuilding = _poolManager.Get<Roof>(_poolManager.PoolSettings.Roof, Vector3.zero, Quaternion.identity);
                     break;
             }
+            
+            SpawnedBuilding.Add(currentBuilding);
             
             return currentBuilding;
         }

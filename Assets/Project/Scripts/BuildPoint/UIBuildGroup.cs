@@ -8,9 +8,12 @@ namespace Project
     {
         [SerializeField]
         private Button _hideButton = null;
-        
+
         [SerializeField]
         private UIBuildingItem[] _uiBuildingItems = null;
+
+        [SerializeField]
+        private DeleteBuildingButton _destroyBuildingButton = null;
 
         [SerializeField]
         private RectTransform _buttonsContaiter = null;
@@ -27,29 +30,40 @@ namespace Project
             PrepareButtons();
             Hide();
         }
-        
-        public void Show(Camera gameCamera, BuildPoint buildPoint)
+
+        public void ShowBuildingButtons(Camera gameCamera, BuildPoint buildPoint)
         {
             var showPositionUI = gameCamera.WorldToScreenPoint(buildPoint.transform.position);
             _buttonsContaiter.position = showPositionUI;
-            
+
             UpdateCreatePosition(buildPoint);
 
             ShowButtons();
         }
         
+        public void ShowDestroyButton(IBuilding building, InGameCamera inGameCamera)
+        {
+            var showPositionUI = inGameCamera.Camera.WorldToScreenPoint(building.Transform.position);
+            _buttonsContaiter.position = showPositionUI;
+            
+            _hideButton.gameObject.SetActive(true);
+            _destroyBuildingButton.Show();
+            _destroyBuildingButton.RefreshBuilding(building);
+        }
+
         public void Hide()
         {
             HideButtons();
         }
-        
+
         private void PrepareButtons()
         {
             _uiBuildingItems.Do(bi => bi.Setup(_buildingCreator, Hide));
-            
+
             _hideButton.onClick.AddListener(Hide);
+            _destroyBuildingButton.onClick.AddListener(Hide);
         }
-        
+
         private void UpdateCreatePosition(BuildPoint buildPoint)
         {
             _uiBuildingItems.Do(bi => bi.UpdateCurrentBuildingPoint(buildPoint));
@@ -65,6 +79,8 @@ namespace Project
         {
             _uiBuildingItems.Do(bi => bi.Hide());
             _hideButton.gameObject.SetActive(false);
+            _destroyBuildingButton.gameObject.SetActive(false);
+            _destroyBuildingButton.Hide();
         }
     }
 }

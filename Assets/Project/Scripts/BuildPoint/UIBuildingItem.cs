@@ -35,6 +35,7 @@ namespace Project
             var buildingBase = _buildingCreator.GetBuilding(_buildType);
 
             buildingBase.transform.position = _currentBuildPoint.transform.position;
+            buildingBase.SetupBuildPoint(_currentBuildPoint);
 
             _currentBuildPoint.Hide();
             _onClickCallback.Invoke();

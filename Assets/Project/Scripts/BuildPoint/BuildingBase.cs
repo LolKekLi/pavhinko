@@ -1,12 +1,19 @@
-using UnityEngine;
-
 namespace Project
 {
-    public abstract class BuildingBase : PooledBehaviour, ICostMultiplier
+    public abstract class BuildingBase : PooledBehaviour
     {
-        public float CostMultiplier
+        private BuildPoint _buildPoint;
+        
+        public void Destroy()
         {
-            get => 2f;
+            _buildPoint.Show();
+            _buildPoint = null;
+            Free();
+        }
+        
+        public void SetupBuildPoint(BuildPoint buildPoint)
+        {
+            _buildPoint = buildPoint;
         }
     }
 }
