@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _freeTimeout: 5
+  _freeTimeout: 0
 --- !u!54 &8573611438880927685
 Rigidbody:
   m_ObjectHideFlags: 0

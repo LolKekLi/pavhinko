@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Project.Meta;
 using Project.UI;
 using UniRx;
 using UnityEngine;
@@ -18,20 +20,33 @@ namespace Project
 
         [SerializeField]
         private Transform _spawnPostion = null;
+
+        [SerializeField]
+        private BallContainer _ballContainer = null;
         
         private JoystickController _joystickController = null;
         private PoolManager _poolManager = null;
         
         private ReactiveProperty<int> _currentBallCount = new ReactiveProperty<int>(0);
+        private ReactiveProperty<int> _maxBallCount = new ReactiveProperty<int>(0);
         
-        public IReadOnlyReactiveProperty<int> Coins
+        private List<Ball> _containerBalls = new List<Ball>();
+        private IUser _iUser;
+
+        public IReadOnlyReactiveProperty<int> CurrentBallCount
         {
             get => _currentBallCount;
         }
 
-        [Inject]
-        private void Construct(JoystickController joystickController, PoolManager poolManager)
+        public IReadOnlyReactiveProperty<int>  MaxBallCount
         {
+            get => _maxBallCount;
+        }
+
+        [Inject]
+        private void Construct(JoystickController joystickController, PoolManager poolManager, IUser iUser)
+        {
+            _iUser = iUser;
             _poolManager = poolManager;
             _joystickController = joystickController;
         }
@@ -39,6 +54,22 @@ namespace Project
         private void Start()
         {
             _currentBallCount.Value = _startBallCount;
+            _maxBallCount.Value = _startBallCount;
+            
+            _ballContainer.Setup(ball =>
+            {
+                if (!_containerBalls.Contains(ball))
+                {
+                    _containerBalls.Add(ball);
+                }
+               
+            }, ball =>
+            {
+                if (_containerBalls.Contains(ball))
+                {
+                    _containerBalls.Remove(ball);
+                }
+            });
         }
 
         private void OnEnable()
@@ -51,6 +82,18 @@ namespace Project
             _joystickController.Clicked -= JoystickController_Clicked;
         }
 
+        public void ReturnBallFromContainer()
+        {
+            _containerBalls.Do(ball =>
+            {
+                _iUser.SetCurrency(CurrencyType.Coin, (int)ball.CurrentCost);
+                
+                ball.Free();
+                
+                _currentBallCount.Value++;
+            });
+        }
+
         private void SpawnBall()
         {
             _currentBallCount.Value--;
@@ -60,13 +103,18 @@ namespace Project
 
             ball.AddForce(_spawnForceDirection * _force);
         }
+        
+        public void UpgradeBallCount()
+        {
+            _maxBallCount.Value++;
+            _currentBallCount.Value++;
+        }
 
         private void JoystickController_Clicked()
         {
-            SpawnBall();
-            if (_currentBallCount.Value >= 0)
+            if (_currentBallCount.Value > 0)
             {
-               
+                SpawnBall();
             }
         }
 
@@ -86,5 +134,6 @@ namespace Project
             }
         }
 #endif
+        
     }
 }

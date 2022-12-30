@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace Project.UI
 {
-    public class UISystem : MonoBehaviour
+    public class UISystem : MonoBehaviour, IForceInject
     {
         [SerializeField]
         private GameObject _windowsContainer = null;
@@ -134,6 +135,11 @@ namespace Project.UI
 
                 canvasGroup.alpha = isActive ? 1 : 0;
             }
+        }
+
+        void IForceInject.ForceInject(DiContainer diContainer)
+        {
+           _windows.Do(diContainer.Inject);
         }
     }
 }
