@@ -13,7 +13,12 @@ namespace Project
 
         public void Click()
         {
-            _buildGroup.Show(_inGameCamera.Camera, transform.position);
+            _buildGroup.Show(_inGameCamera.Camera, this);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

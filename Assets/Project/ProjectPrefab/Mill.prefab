@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1445289697745467339}
   - component: {fileID: 1445289697745467338}
   - component: {fileID: 1445289697745467336}
+  - component: {fileID: 2361417933491093319}
   m_Layer: 0
   m_Name: Mill
   m_TagString: Untagged
@@ -199,6 +200,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15058258, y: 0.15926354, z: 0.07404767}
   m_Center: {x: 0.0038680062, y: -0.00044394634, z: 0.037019804}
+--- !u!114 &2361417933491093319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445289697745467332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e892c184f7d4520a1eba93123513b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1445289697977237445
 GameObject:
   m_ObjectHideFlags: 0

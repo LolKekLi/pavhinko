@@ -9,7 +9,7 @@ namespace Project
     {
         private BuildingCreator _buildingCreator = null;
         
-        private Vector3 _createPosition = Vector3.zero;
+        private BuildPoint _currentBuildPoint = null;
         private Action _onClickCallback = null;
 
         [SerializeField]
@@ -21,9 +21,9 @@ namespace Project
             _onClickCallback = onClickCallback;
         }
 
-        public void UpdateCreatePosition(Vector3 createPosition)
+        public void UpdateCurrentBuildingPoint(BuildPoint buildPoint)
         {
-            _createPosition = createPosition;
+            _currentBuildPoint = buildPoint;
         }
 
         public override void OnPointerClick(PointerEventData eventData)
@@ -34,8 +34,9 @@ namespace Project
             
             var buildingBase = _buildingCreator.GetBuilding(_buildType);
 
-            buildingBase.transform.position = _createPosition;
+            buildingBase.transform.position = _currentBuildPoint.transform.position;
 
+            _currentBuildPoint.Hide();
             _onClickCallback.Invoke();
         }
 

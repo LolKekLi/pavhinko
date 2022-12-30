@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Project
 {
     public class BuildingCreator
@@ -11,24 +13,24 @@ namespace Project
 
         public BuildingBase GetBuilding(BuildType buildType)
         {
-            //TODO: current buildings
+            BuildingBase currentBuilding = null;
             
             switch (buildType)
             {
                 case BuildType.Multiplier: 
-                    return null;
+                    currentBuilding = _poolManager.Get<Multiplier>(_poolManager.PoolSettings.Multiplier, Vector3.zero, Quaternion.identity);
                     break;
                 
                 case BuildType.Mill:
-                    return null;
+                    currentBuilding = _poolManager.Get<Mill>(_poolManager.PoolSettings.Mill, Vector3.zero, Quaternion.identity);
                     break;
                 
                 case BuildType.Roof:
-                    return null;
+                    currentBuilding = _poolManager.Get<Roof>(_poolManager.PoolSettings.Roof, Vector3.zero, Quaternion.identity);
                     break;
             }
             
-            return null;
+            return currentBuilding;
         }
     }
 }
