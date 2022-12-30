@@ -482,3 +482,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _costMultiplier: 1.5
+  _canDestroy: 1
+  _buildingBase: {fileID: 2361417933491093319}
