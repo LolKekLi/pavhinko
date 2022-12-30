@@ -48,7 +48,7 @@ namespace Project
             BindManager(AudioManager.GetManager);
             BindManager(ParticlesManager.GetManager);
             BindManager(UIOverlayMessage.GetManager);
-            
+
 #if FORCE_DEBUG
             Container.BindInterfacesTo<DebugMenu>().AsSingle().NonLazy();
 #endif

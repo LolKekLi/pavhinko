@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7833e85de0736944a1a1792a506b812, type: 3}
   m_Name: BallSettings
   m_EditorClassIdentifier: 
-  <StartMaxBallCount>k__BackingField: 0
-  <StartBallCost>k__BackingField: 0
+  <StartMaxBallCount>k__BackingField: 10
+  <StartBallCost>k__BackingField: 1
   <BallGradient>k__BackingField:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 0, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}

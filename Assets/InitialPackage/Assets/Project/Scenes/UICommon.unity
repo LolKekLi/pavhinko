@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiSystem: {fileID: 699786703}
+  _uiBuildGroup: {fileID: 1828297515}
   _joystickController: {fileID: 1828297514}
 --- !u!1 &1735616346
 GameObject:
@@ -465,6 +466,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 699786702}
     m_Modifications:
+    - target: {fileID: 149096548985120207, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 591826161384898102, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_OverridePixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1147712502880229048, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -561,13 +570,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2659727430816929560, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046123644151598219, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: _uiCamera
+      value: 
+      objectReference: {fileID: 563147875}
+    - target: {fileID: 3355467096736349543, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913396186329908499, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226538831051198855, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253160780234425232, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6685987323773800241, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7228806605208870727, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7434557234762198379, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
       propertyPath: m_Name
       value: ResultWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629117677340594399, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891799964531924796, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9222496237143870459, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
       propertyPath: m_LocalPosition.x
@@ -598,5 +643,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea5adbf1ec6c54d4985a11890da0ddf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1828297515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3046123644151598219, guid: def6bdc83b884475d858bd968c7ff476, type: 3}
+  m_PrefabInstance: {fileID: 1828297511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ac5a09c16c47bf9160d323864d0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
