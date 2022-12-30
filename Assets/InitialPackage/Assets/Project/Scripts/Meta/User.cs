@@ -7,14 +7,20 @@ namespace Project.Meta
 {
     public class User : StorageObject<UserStorageData>, IUser, ILevelData, IDisposable, IInitializable
     {
-        private ReactiveProperty<int> _coins = new ReactiveProperty<int>(0);
-        private ReactiveProperty<int> _levelIndex = new ReactiveProperty<int>(0);
+        private readonly ReactiveProperty<int> _coins = new ReactiveProperty<int>(0);
+        private readonly ReactiveProperty<int> _levelIndex = new ReactiveProperty<int>(0);
+        private readonly ReactiveProperty<int> _maxBallCount = new ReactiveProperty<int>(0);
 
-        private UniRxSubscribersContainer _subscribersContainer = new UniRxSubscribersContainer();
+        private readonly UniRxSubscribersContainer _subscribersContainer = new UniRxSubscribersContainer();
 
         public IReadOnlyReactiveProperty<int> Coins
         {
             get => _coins;
+        }
+
+        public IReadOnlyReactiveProperty<int> MaxBallCount
+        {
+            get => _maxBallCount;
         }
 
         public IReadOnlyReactiveProperty<int> LevelIndexProperty
@@ -54,6 +60,20 @@ namespace Project.Meta
             }
         }
 
+        void IUser.SetMaxBallCount(int ballCount)
+        {
+            ConcreteData.MaxBallCount = ballCount;
+
+            Save();
+
+            _maxBallCount.Value = ConcreteData.MaxBallCount;
+        }
+
+        void IUser.UpgradeMaxBallCount()
+        {
+            _maxBallCount.Value++;
+        }
+
         void IDisposable.Dispose()
         {
             Save();
@@ -65,6 +85,7 @@ namespace Project.Meta
 
             _coins.Value = ConcreteData.MoneyCount;
             _levelIndex.Value = ConcreteData.LevelIndex;
+            _maxBallCount.Value = ConcreteData.MaxBallCount;
             
             _subscribersContainer.Subscribe(Coins, i =>
             {
@@ -76,6 +97,13 @@ namespace Project.Meta
             _subscribersContainer.Subscribe(LevelIndexProperty, i =>
             {
                 ConcreteData.LevelIndex = i;
+                
+                Save();
+            });
+            
+            _subscribersContainer.Subscribe(MaxBallCount, i =>
+            {
+                ConcreteData.MaxBallCount = i;
                 
                 Save();
             });

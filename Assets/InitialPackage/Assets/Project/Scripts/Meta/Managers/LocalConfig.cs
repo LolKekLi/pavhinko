@@ -11,8 +11,24 @@ namespace Project
             public const string UnlockedSkin = "UnlockedSkin{0}_{1}";
             public const string SkinClaimProgress = "SkinClaimProgress{0}_{1}";
             public const string SelectedSkin = "SelectedSkin_{0}";
+            public const string IsFirstLoad = "IsFirstLoad";
         }
-        
+
+        public static bool IsFirstLoad
+        {
+            get
+            {
+                var isFirstLoad = GetBoolValue(Keys.IsFirstLoad, true);
+                
+                if (isFirstLoad)
+                {
+                    SetBoolValue(Keys.IsFirstLoad, false);
+                }
+
+                return isFirstLoad;
+            }
+        }
+
         public static int GetSkinClaimProgress(SkinType skinType, SkinPartType partType)
         {
             return PlayerPrefs.GetInt(string.Format(Keys.SkinClaimProgress, skinType, partType), 0);

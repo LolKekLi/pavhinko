@@ -23,6 +23,9 @@ namespace Project.UI
         private Button _byBallButton = null;
 
         [SerializeField]
+        private TextMeshProUGUI _ballCostText = null;
+
+        [SerializeField]
         private int _ballCost = 0;
         
         [InjectOptional]
@@ -47,6 +50,8 @@ namespace Project.UI
             
             _takeBallsButton.onClick.AddListener(OnTakeBallsButtonClick);
             _byBallButton.onClick.AddListener(OnByBallButtonClick);
+
+            _ballCostText.text = $"{_ballCost}";
         }
         
         protected override void OnEnable()
@@ -57,7 +62,7 @@ namespace Project.UI
             {
                 RefreshBallCounter();
                 
-                SubscribersContainer.Subscribe(_ballSpawner.MaxBallCount, i =>
+                SubscribersContainer.Subscribe(_iUser.MaxBallCount, i =>
                 {
                     RefreshBallCounter();
                 });
@@ -93,13 +98,15 @@ namespace Project.UI
             if (_iUser.CanUpgrade(CurrencyType.Coin, _ballCost))
             {
                 _iUser.SetCurrency(CurrencyType.Coin, -_ballCost);
+
+                _iUser.UpgradeMaxBallCount();
                 _ballSpawner.UpgradeBallCount();
             }
         }
         
         private void RefreshBallCounter()
         {
-            _ballCounter.text = $"{_ballSpawner.MaxBallCount.Value}/{_ballSpawner.CurrentBallCount.Value}";
+            _ballCounter.text = $"{_iUser.MaxBallCount.Value}/{_ballSpawner.CurrentBallCount.Value}";
         }
     }
 }

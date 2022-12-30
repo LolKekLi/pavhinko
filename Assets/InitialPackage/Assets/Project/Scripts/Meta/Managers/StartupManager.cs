@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 using Cysharp.Threading.Tasks;
+using Project.Meta;
 using Project.Settings;
 
 namespace Project
@@ -19,16 +20,26 @@ namespace Project
 
         private LoadingSettings _loadingSettings;
         private LevelFlowController _levelFlowController = null;
+        private IUser _iUser;
+        private BallSettings _ballSettings;
 
         [Inject]
-        public void Construct(LoadingSettings loadingSettings, LevelFlowController levelFlowController)
+        public void Construct(LoadingSettings loadingSettings, LevelFlowController levelFlowController, IUser iUser,
+            BallSettings ballSettings)
         {
+            _ballSettings = ballSettings;
+            _iUser = iUser;
             _loadingSettings = loadingSettings;
             _levelFlowController = levelFlowController;
         }
-        
+
         private async void Start()
         {
+            if (LocalConfig.IsFirstLoad)
+            {
+                _iUser.SetMaxBallCount(_ballSettings.StartMaxBallCount);
+            }
+            
             DontDestroyOnLoad(gameObject);
 
             SetupProjectSettings();

@@ -10,9 +10,6 @@ namespace Project
     public class BallSpawner : MonoBehaviour
     {
         [SerializeField]
-        private int _startBallCount = 0;
-        
-        [SerializeField]
         private float _force = 0f;
 
         [SerializeField]
@@ -28,7 +25,6 @@ namespace Project
         private PoolManager _poolManager = null;
         
         private ReactiveProperty<int> _currentBallCount = new ReactiveProperty<int>(0);
-        private ReactiveProperty<int> _maxBallCount = new ReactiveProperty<int>(0);
         
         private List<Ball> _containerBalls = new List<Ball>();
         private IUser _iUser;
@@ -37,12 +33,7 @@ namespace Project
         {
             get => _currentBallCount;
         }
-
-        public IReadOnlyReactiveProperty<int>  MaxBallCount
-        {
-            get => _maxBallCount;
-        }
-
+        
         [Inject]
         private void Construct(JoystickController joystickController, PoolManager poolManager, IUser iUser)
         {
@@ -53,9 +44,8 @@ namespace Project
 
         private void Start()
         {
-            _currentBallCount.Value = _startBallCount;
-            _maxBallCount.Value = _startBallCount;
-            
+            _currentBallCount.Value = _iUser.MaxBallCount.Value;
+           
             _ballContainer.Setup(ball =>
             {
                 if (!_containerBalls.Contains(ball))
@@ -92,6 +82,8 @@ namespace Project
                 
                 _currentBallCount.Value++;
             });
+            
+            _containerBalls.Clear();
         }
 
         private void SpawnBall()
@@ -106,7 +98,6 @@ namespace Project
         
         public void UpgradeBallCount()
         {
-            _maxBallCount.Value++;
             _currentBallCount.Value++;
         }
 

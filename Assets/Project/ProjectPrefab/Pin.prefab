@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3682466315760255151}
   - component: {fileID: 3682466315760255144}
+  - component: {fileID: 1032389320736877318}
   m_Layer: 0
   m_Name: Pin
   m_TagString: Untagged
@@ -46,6 +47,19 @@ CapsuleCollider:
   m_Height: 0.47900948
   m_Direction: 1
   m_Center: {x: 0, y: 0.17447124, z: 0}
+--- !u!114 &1032389320736877318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682466315760255145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4c6508c65344ef884d6bdd5160d08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _costMultiplier: 2
 --- !u!1 &3682466317727808632
 GameObject:
   m_ObjectHideFlags: 0

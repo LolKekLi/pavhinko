@@ -1,20 +1,26 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace Project
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Ball : PooledBehaviour
     {
-        [SerializeField, Space]
-        private float _startCost = 1;
-        
         private Rigidbody _rb = null;
-        
+        private BallSettings _ballSettings;
+
         public float CurrentCost
         {
             get;
             private set;
+        }
+
+
+        [Inject]
+        private void Construct(BallSettings ballSettings)
+        {
+            _ballSettings = ballSettings;
         }
 
         public override void Prepare(PooledObjectType pooledType)
@@ -23,7 +29,7 @@ namespace Project
 
             _rb = GetComponent<Rigidbody>();
 
-            CurrentCost = _startCost;
+            CurrentCost = _ballSettings.StartBallCost;
         }
 
         protected override void BeforeReturnToPool()

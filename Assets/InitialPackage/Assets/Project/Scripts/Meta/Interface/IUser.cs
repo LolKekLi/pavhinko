@@ -9,7 +9,14 @@ namespace Project.Meta
             get;
         }
         
+        public IReadOnlyReactiveProperty<int> MaxBallCount
+        {
+            get;
+        }
+        
         bool CanUpgrade(CurrencyType type, int amount);
         void SetCurrency(CurrencyType type, int amount);
+        void UpgradeMaxBallCount();
+        void SetMaxBallCount(int ballCount);
     }
 }
