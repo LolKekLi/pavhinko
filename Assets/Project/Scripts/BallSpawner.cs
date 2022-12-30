@@ -10,7 +10,7 @@ namespace Project
     public class BallSpawner : MonoBehaviour
     {
         [SerializeField]
-        private float _force = 0f;
+        private FloatRange _force = null;
 
         [SerializeField]
         private Vector2 _spawnForceDirection = Vector2.zero;
@@ -93,7 +93,7 @@ namespace Project
             var ball = _poolManager.Get<Ball>(_poolManager.PoolSettings.Ball, _spawnPostion.position,
                 Quaternion.identity);
 
-            ball.AddForce(_spawnForceDirection * _force);
+            ball.AddForce(_spawnForceDirection * _force.InRangeValue());
         }
         
         public void UpgradeBallCount()

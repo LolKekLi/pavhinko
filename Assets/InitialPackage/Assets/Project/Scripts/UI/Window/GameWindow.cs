@@ -61,7 +61,7 @@ namespace Project.UI
             _takeBallsButton.onClick.AddListener(OnTakeBallsButtonClick);
             _byBallButton.onClick.AddListener(OnByBallButtonClick);
 
-            _ballCostText.text = $"{CurrentBallCost}";
+            _ballCostText.text = $"${CurrentBallCost}";
         }
 
         protected override void OnEnable()

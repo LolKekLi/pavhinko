@@ -49,6 +49,8 @@ namespace Project
             base.BeforeReturnToPool();
 
             _rb.ResetForce();
+
+            CurrentCost = _ballSettings.StartBallCost;
             
             ResetColor();
         }
