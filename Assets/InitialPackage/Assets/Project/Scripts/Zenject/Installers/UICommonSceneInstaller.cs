@@ -1,5 +1,4 @@
 using Project.UI;
-using Project.UIDebug;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +8,7 @@ namespace Project
     {
         [SerializeField]
         private UISystem _uiSystem = null;
-        
+
         [SerializeField]
         private JoystickController _joystickController = null;
     
@@ -30,6 +29,7 @@ namespace Project
         {
             Container.ParentContainers[0].Bind<UISystem>().FromInstance(_uiSystem).AsCached();
             Container.ParentContainers[0].Bind<JoystickController>().FromInstance(_joystickController).AsCached();
+
             Container.ParentContainers[0].Inject(_levelFlowController);
             
 #if FORCE_DEBUG
