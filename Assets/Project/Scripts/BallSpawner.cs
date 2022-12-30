@@ -3,6 +3,7 @@ using Project.Meta;
 using Project.UI;
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Project
@@ -101,7 +102,7 @@ namespace Project
             _currentBallCount.Value++;
         }
 
-        private void JoystickController_Clicked()
+        private void JoystickController_Clicked(PointerEventData pointerEventData)
         {
             if (_currentBallCount.Value > 0)
             {
