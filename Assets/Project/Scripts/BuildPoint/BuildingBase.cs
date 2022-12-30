@@ -2,13 +2,11 @@ using UnityEngine;
 
 namespace Project
 {
-    public abstract class BuildingBase : MonoBehaviour
+    public abstract class BuildingBase : PooledBehaviour, ICostMultiplier
     {
-        [field: SerializeField]
-        public BuildType BuildType
+        public float CostMultiplier
         {
-            get;
-            private set;
+            get => 2f;
         }
     }
 }

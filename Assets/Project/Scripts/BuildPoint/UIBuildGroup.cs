@@ -28,12 +28,12 @@ namespace Project
             Hide();
         }
         
-        public void Show(Camera gameCamera, Vector3 showPositionWorld)
+        public void Show(Camera gameCamera, BuildPoint buildPoint)
         {
-            var showPositionUI = gameCamera.WorldToScreenPoint(showPositionWorld);
+            var showPositionUI = gameCamera.WorldToScreenPoint(buildPoint.transform.position);
             _buttonsContaiter.position = showPositionUI;
             
-            UpdateCreatePosition(showPositionWorld);
+            UpdateCreatePosition(buildPoint);
 
             ShowButtons();
         }
@@ -50,9 +50,9 @@ namespace Project
             _hideButton.onClick.AddListener(Hide);
         }
         
-        private void UpdateCreatePosition(Vector3 buildPosition)
+        private void UpdateCreatePosition(BuildPoint buildPoint)
         {
-            _uiBuildingItems.Do(bi => bi.UpdateCreatePosition(buildPosition));
+            _uiBuildingItems.Do(bi => bi.UpdateCurrentBuildingPoint(buildPoint));
         }
 
         private void ShowButtons()

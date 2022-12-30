@@ -11,7 +11,8 @@ namespace Project
     {
         private readonly int PrepareBallCunt = 100;
         private readonly int CostMultiplierEffect = 100;
-        
+        private readonly int BuildingCount = 5;
+
         private LevelFlowController _levelFlowController = null;
         private DiContainer _diContainer = null;
         
@@ -62,6 +63,10 @@ namespace Project
         {
             Prepare(PoolSettings.Ball, PoolSettings.Ball.Type, PrepareBallCunt);
             Prepare(PoolSettings.CostMultiplierEffect, PoolSettings.CostMultiplierEffect.Type, CostMultiplierEffect);
+            
+            Prepare(PoolSettings.Multiplier, PoolSettings.Multiplier.Type, BuildingCount);
+            //Prepare(PoolSettings.Mill, PoolSettings.Mill.Type, BuildingCount);
+            //Prepare(PoolSettings.Roof, PoolSettings.Roof.Type, BuildingCount);
         }
         
         private PooledBehaviour PrepareObject(PooledBehaviour pooledBehaviour, PooledObjectType pooledType)

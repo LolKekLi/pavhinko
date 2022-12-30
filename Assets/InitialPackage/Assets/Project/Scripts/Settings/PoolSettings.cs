@@ -25,5 +25,26 @@ namespace Project.Settings
             get;
             private set;
         }
+        
+        [field: SerializeField]
+        public Mill Mill
+        {
+            get;
+            private set;
+        }
+        
+        [field: SerializeField]
+        public Multiplier Multiplier
+        {
+            get;
+            private set;
+        }
+        
+        [field: SerializeField]
+        public Roof Roof
+        {
+            get;
+            private set;
+        }
     }
 }
