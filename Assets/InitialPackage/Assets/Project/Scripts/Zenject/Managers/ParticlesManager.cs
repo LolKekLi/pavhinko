@@ -42,7 +42,7 @@ namespace Project
                 DebugSafe.LogException(new Exception($"{nameof(ParticleType)} already exist in dictionary"));
             }
         }
-
+        
         public void Emit(ParticleType fxType, Vector3 position)
         {
             if (_particles.TryGetValue(fxType, out var particle))

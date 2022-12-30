@@ -25,5 +25,12 @@ namespace Project
             get;
             private set;
         }
+
+        [field: SerializeField]
+        public float BallCostMultiplier
+        {
+            get;
+            private set;
+        }
     }
 }
