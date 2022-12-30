@@ -10,6 +10,7 @@ namespace Project
     public class PoolManager : ZenjectManager<PoolManager>
     {
         private readonly int PrepareBallCunt = 100;
+        private readonly int CostMultiplierEffect = 100;
         
         private LevelFlowController _levelFlowController = null;
         private DiContainer _diContainer = null;
@@ -60,6 +61,7 @@ namespace Project
         private void PreparePool()
         {
             Prepare(PoolSettings.Ball, PoolSettings.Ball.Type, PrepareBallCunt);
+            Prepare(PoolSettings.CostMultiplierEffect, PoolSettings.CostMultiplierEffect.Type, CostMultiplierEffect);
         }
         
         private PooledBehaviour PrepareObject(PooledBehaviour pooledBehaviour, PooledObjectType pooledType)

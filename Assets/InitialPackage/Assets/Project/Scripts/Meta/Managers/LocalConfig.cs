@@ -12,6 +12,7 @@ namespace Project
             public const string SkinClaimProgress = "SkinClaimProgress{0}_{1}";
             public const string SelectedSkin = "SelectedSkin_{0}";
             public const string IsFirstLoad = "IsFirstLoad";
+            public const string BallCost = "BallCost{0}";
         }
 
         public static bool IsFirstLoad
@@ -19,7 +20,7 @@ namespace Project
             get
             {
                 var isFirstLoad = GetBoolValue(Keys.IsFirstLoad, true);
-                
+
                 if (isFirstLoad)
                 {
                     SetBoolValue(Keys.IsFirstLoad, false);
@@ -32,13 +33,13 @@ namespace Project
         public static int GetSkinClaimProgress(SkinType skinType, SkinPartType partType)
         {
             return PlayerPrefs.GetInt(string.Format(Keys.SkinClaimProgress, skinType, partType), 0);
-        } 
-        
+        }
+
         public static void SetSkinClaimProgress(SkinType skinType, SkinPartType partType)
         {
             PlayerPrefs.SetInt(string.Format(Keys.SkinClaimProgress, skinType, partType),
                 GetSkinClaimProgress(skinType, partType) + 1);
-        } 
+        }
 
         public static bool IsSkinUnlocked(SkinType skinType, SkinPartType partType)
         {
@@ -49,15 +50,15 @@ namespace Project
         {
             SetBoolValue(string.Format(Keys.UnlockedSkin, skinType, partType), isUnlock);
         }
-        
+
         public static bool IsSkinSelected(SkinType skinType, SkinPartType partType)
         {
-            var skins = (SkinType[]) Enum.GetValues(typeof(SkinType)); 
+            var skins = (SkinType[])Enum.GetValues(typeof(SkinType));
             var defaultSkin = skins.FirstOrDefault();
 
             var skin = (SkinType)Enum.Parse(typeof(SkinType),
                 PlayerPrefs.GetString(string.Format(Keys.SelectedSkin, partType), defaultSkin.ToString()));
-            
+
             return skin == skinType;
         }
 
@@ -68,7 +69,7 @@ namespace Project
 
         public static SkinType GetSelectedSkin(SkinPartType partType)
         {
-            var skins = (SkinType[]) Enum.GetValues(typeof(SkinType)); 
+            var skins = (SkinType[])Enum.GetValues(typeof(SkinType));
             var defaultSkin = skins.FirstOrDefault();
 
             var skin = (SkinType)Enum.Parse(typeof(SkinType),
@@ -86,7 +87,7 @@ namespace Project
         {
             return PlayerPrefs.GetInt(key, defaultValue ? 1 : 0) == 1;
         }
-        
+
         private static DateTime GetDateTimeValue(string key, DateTime defaultValue)
         {
             DateTime time;
@@ -103,6 +104,16 @@ namespace Project
         private static void SetDateTimeValue(string key, DateTime value)
         {
             PlayerPrefs.SetString(key, value.Serialize());
+        }
+
+        public static int GetBallCostLevel(int levelIndex)
+        {
+            return PlayerPrefs.GetInt(string.Format(Keys.BallCost, levelIndex), 1);
+        }
+
+        public static void SetBallCostLevel(int levelIndex, int ballCostLevel)
+        {
+            PlayerPrefs.SetInt(string.Format(Keys.BallCost, levelIndex), ballCostLevel);
         }
     }
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PooledAudio>k__BackingField: {fileID: 6721363782500263695, guid: f5e361ba72fd74ab484d6986ab7239ef, type: 3}
   <Ball>k__BackingField: {fileID: 4066762212649232984, guid: fa53d996cd2eb994aab64b127ce0bca4, type: 3}
+  <CostMultiplierEffect>k__BackingField: {fileID: 5201680052368587559, guid: c5dac8e5c47c0ad459041af9a1b91ec0, type: 3}

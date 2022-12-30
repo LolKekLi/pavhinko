@@ -18,5 +18,12 @@ namespace Project.Settings
             get;
             private set;
         }
+
+        [field: SerializeField]
+        public CostMultiplierEffect CostMultiplierEffect
+        {
+            get;
+            private set;
+        }
     }
 }
